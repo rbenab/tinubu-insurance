@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  springboot:
+    image: tinubu-insurance
+    ports:
+      - "8081:8083" # Mappe le port 8080 de l'application Spring Boot
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/tinubu_insurance_db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+
+  postgres:
+    image: postgres:13
+    container_name: tinubu_insurance_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: tinubu_insurance_db
+    ports:
+      - "5434:5432"  # Port 5433 pour Docker (5432 à l'intérieur du conteneur)
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      
+volumes:
+  postgres-data:
+

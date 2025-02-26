@@ -1,0 +1,21 @@
+# .gitignore pour un projet Java avec Maven
+
+# Ignorer le dossier target (généré par Maven)
+target/
+
+# Ignorer les fichiers IDE (exemples pour IntelliJ IDEA et Eclipse)
+.idea/
+*.iml
+*.project
+*.classpath
+
+# Ignorer les fichiers de log
+*.log
+
+# Ignorer les fichiers de configuration locale de l'utilisateur
+*.swp
+.DS_Store
+
+# Ignorer les fichiers de configuration spécifiques à Docker
+docker-compose.override.yml
+
