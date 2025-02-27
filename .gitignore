@@ -19,3 +19,6 @@ target/
 # Ignorer les fichiers de configuration spécifiques à Docker
 docker-compose.override.yml
 
+# Ignorer les fichiers de configuration Eclipse
+.settings/
+
