@@ -4,7 +4,7 @@ services:
   springboot:
     image: tinubu-insurance
     ports:
-      - "8081:8083" # Mappe le port 8080 de l'application Spring Boot
+      - "8081:8083" # Mappe le port 8081 de l'application Spring Boot
     depends_on:
       - postgres
     environment:

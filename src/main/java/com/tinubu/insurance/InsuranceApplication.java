@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
@@ -17,6 +18,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableAutoConfiguration
 @EnableScheduling
 @ComponentScan(basePackages = "com.tinubu.insurance**")
+@EnableJpaRepositories(basePackages = "com.tinubu.insurance.repository")
 @EntityScan(basePackages = "com.tinubu.insurance.model")
 public class InsuranceApplication {
     public static void main(String[] args) {
