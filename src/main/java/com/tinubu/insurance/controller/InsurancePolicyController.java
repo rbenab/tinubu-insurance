@@ -47,17 +47,24 @@ public class InsurancePolicyController {
     
     // Lire une police par ID
     @GetMapping("/{id}")
-    public ResponseEntity<InsurancePolicy> getPolicyById(@PathVariable int id) {
+    public ResponseEntity<?> getPolicyById(@PathVariable int id) {
         Optional<InsurancePolicy> policy = insurancePolicyService.getPolicyById(id);
-        return policy.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+        if (policy.isPresent()) {
+            return ResponseEntity.ok(policy);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Insurance policy not found with ID: " + id);
+        }
     }
-
+    
+    
     // Créer une nouvelle police
     @PostMapping
     public ResponseEntity<?> createPolicy(@Valid @RequestBody InsurancePolicy policy) {
         try {
             InsurancePolicy savedPolicy = insurancePolicyService.createPolicy(policy);
             return ResponseEntity.ok(savedPolicy);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
         } catch (ConstraintViolationException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
@@ -75,7 +82,7 @@ public class InsurancePolicyController {
             return ResponseEntity.badRequest().body(e.getMessage());
         } catch (RuntimeException e) {
             // Si l'entité n'est pas trouvée, on renvoie un message 404 avec l'erreur
-            return ResponseEntity.status(404).body(e.getMessage());
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
     }
 

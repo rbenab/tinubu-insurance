@@ -25,8 +25,6 @@ public class InsurancePolicyServiceImpl implements InsurancePolicyService {
 	private final InsurancePolicyReadRepository readRepository;
 	private final InsurancePolicyCommandRepository commandRepository;
 
-	private static final Logger LOGGER = Logger.getLogger(InsurancePolicyServiceImpl.class);
-
 	public InsurancePolicyServiceImpl(InsurancePolicyReadRepository readRepository,
 			InsurancePolicyCommandRepository commandRepository) {
 		this.readRepository = readRepository;
@@ -82,7 +80,7 @@ public class InsurancePolicyServiceImpl implements InsurancePolicyService {
 
 			// Enregistrer et renvoyer l'objet mis à jour
 			return commandRepository.save(existingPolicy);
-		}).orElseThrow(() -> new RuntimeException("Policy not found"));
+		}).orElseThrow(() -> new RuntimeException("Insurance policy not found with ID: " + id));
 	}
 
 	@Override

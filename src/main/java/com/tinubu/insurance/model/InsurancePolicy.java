@@ -14,9 +14,8 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.Future;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-
-import com.tinubu.insurance.exception.StartDateBeforeEndDate;
 
 
 /**
@@ -35,6 +34,7 @@ public class InsurancePolicy {
 	private Integer id;
 
 	@NotNull(message = "Le nom de la police est obligatoire")
+	@NotBlank(message = "Le nom de la police est obligatoire")
 	@Column(name = "policy_name", nullable = false)
 	private String policyName;
 
@@ -48,7 +48,6 @@ public class InsurancePolicy {
 	private LocalDate startDate;
 
 	@NotNull(message = "La date de fin est obligatoire")
-	//@StartDateBeforeEndDate(message = "La date de fin doit être après la date de début et dans le futur")
 	@Future(message = "La date de fin doit être dans le futur")
 	@Column(name = "end_date", nullable = false)
 	private LocalDate endDate;
@@ -58,8 +57,6 @@ public class InsurancePolicy {
 
 	@Column(name = "updated_at", nullable = false)
 	private LocalDate updatedAt;
-
-
 
 	@PrePersist
 	protected void onCreate() {
