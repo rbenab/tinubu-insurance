@@ -7,6 +7,7 @@ Tinubu Insurance est une application Spring Boot pour la gestion des assurances.
 ## Prérequis
 
 Avant de pouvoir exécuter cette application, assurez-vous d'avoir installé Docker et Docker Compose sur votre machine.
+L'application utilise openjdk:11-jre-slim comme image de base pour exécuter l'application Java dans le conteneur Docker.
 
 ## Lancer l'application
 

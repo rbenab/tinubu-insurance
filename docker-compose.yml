@@ -4,7 +4,7 @@ services:
   springboot:
     image: tinubu-insurance
     ports:
-      - "8081:8083" # Mappe le port 8081 de l'application Spring Boot
+      - "8081:8083" # Mappe le port 8081 de l'hôte vers le port 8083 du conteneur (port de l'application Spring Boot)
     depends_on:
       - postgres
     environment:
@@ -21,7 +21,7 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: tinubu_insurance_db
     ports:
-      - "5434:5432"  # Port 5433 pour Docker (5432 à l'intérieur du conteneur)
+      - "5434:5432"  # Mappe le port 5434 de l'hôte vers le port 5432 du conteneur PostgreSQL
     volumes:
       - postgres-data:/var/lib/postgresql/data
       
