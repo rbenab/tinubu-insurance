@@ -16,11 +16,18 @@ Avant de pouvoir exécuter cette application, assurez-vous d'avoir installé Doc
    cd tinubu-insurance
    
 2. Construisez et lancez l'application avec Docker Compose : 
-  
-  docker-compose up --build
-  
+   ```bash
+   docker-compose up --build
+
 3. L'application sera disponible à l'adresse suivante : 
+
+   http://localhost:8081/tinubu-insurance/server/status
+
+   Réponse attendue : Server Active
   
-  http://localhost:8081/tinubu-insurance
+5. Accédez aux API :
+   Les endpoints de l'application sont disponibles sous :
+   
+   http://localhost:8081/tinubu-insurance/policies
 
 
